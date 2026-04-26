@@ -1,0 +1,14 @@
+{
+  "name": "prompt-retro",
+  "version": "0.1.0",
+  "description": "Mirror your own prompts through the 3D lens (Define / Done / Disclose) for sharper thinking.",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skill",
+    "prompt-engineering",
+    "retrospective",
+    "thinking",
+    "self-improvement"
+  ]
+}
