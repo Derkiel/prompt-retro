@@ -1,6 +1,6 @@
 ---
 name: prompt-retro
-description: Mirror the user's most recent prompt through the 3D lens (Define / Done / Disclose) so they can see what they left vague, undefined, or assumed and revise it themselves. Activate when the prompt contains compressed labels, vague qualifiers, immeasurable adjectives, missing goals, or buried assumptions. Skip short follow-ups, social messages, and already-precise prompts. When in doubt, skip.
+description: Mirror the user's most recent prompt back through the 3D lens (Define / Done / Disclose) so they can spot what they left vague and revise it themselves — never rewrite the prompt for them. Trigger when the prompt has a compressed single-word label, a vague qualifier ("sometimes", "a bit", "kind of"), an immeasurable adjective ("better", "cleaner", "nicer"), no stated goal, or a hidden assumption. Also trigger if the user types `/retro` or explicitly asks for a retrospective on their previous prompt. Skip short follow-ups, social messages, and already-precise prompts. When in doubt, skip — this skill is intentionally quiet to avoid friction.
 ---
 
 # prompt-retro
@@ -25,7 +25,7 @@ Stay silent for:
 - Already-precise prompts that name entities, measurable criteria, and a goal (e.g., *"Add a `--verbose` flag to `cli.py` that prints each step's name and duration"*)
 - Emotional or social messages
 
-When in doubt, skip. False negatives are cheap; false positives are friction.
+When in doubt, skip. False negatives are cheap; false positives are friction. The user can always invoke `/retro` manually if they want a mirror they didn't get.
 
 ## How to mirror — the 3D lens
 
@@ -56,14 +56,28 @@ Rules:
 - Ask, do not assert
 - Omit any dimension that is already clear
 
-## What you must not do
+### Concrete example
 
-- Do not rewrite the user's prompt
-- Do not provide answers to your own questions
-- Do not append the mirror to short follow-ups, acknowledgments, or social messages
-- Do not be exhaustive — one sharpest observation per dimension is enough
-- Do not lecture; show, don't preach
+If the user prompt is *"Make the dashboard a bit cleaner sometimes when you spot issues"*, a useful mirror is:
+
+```
+---
+🪞 retro
+- Define: "a bit cleaner" — by what measure? readability, fewer panels, lower density?
+- Define: "sometimes when you spot issues" — every PR, only when I ask, or on a schedule?
+- Done: what would I notice as different in the screenshot?
+```
+
+The user's actual words appear in `Define`. Each line is a question, not a verdict. Three lines is the ceiling, not a target — fewer is fine.
+
+## Constraints (and why)
+
+- **Don't rewrite the user's prompt.** Doing the work for them defeats the training purpose. Show the seam; let them close it.
+- **Don't answer your own questions.** Speculating about what they meant short-circuits their thinking — the question is the gift.
+- **Don't append the mirror to short follow-ups, acknowledgments, or social messages.** That's the friction that makes users disable the skill.
+- **One sharpest observation per dimension is enough.** A wall of bullets reads as a lecture; a single sharp question invites reflection.
+- **Show, don't preach.** Quote the user's exact phrase and frame as a question — never a verdict.
 
 ## Manual override
 
-If the user types `/retro` or explicitly asks for a retrospective on their previous prompt, run the mirror against their **previous substantive prompt** (the one before the `/retro` command) regardless of the gating criteria above.
+If the user types `/retro` or explicitly asks for a retrospective on their previous prompt, run the mirror against their **previous substantive prompt** (the one before the `/retro` command) regardless of the gating criteria above. In manual mode, if no dimension is genuinely thin, say so in one short line rather than inventing a gap.
