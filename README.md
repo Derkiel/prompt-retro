@@ -24,14 +24,29 @@ You can also call it manually with `/retro` to mirror your previous prompt regar
 
 ## Install
 
+This repo is a Claude Code marketplace containing a single plugin (also called `prompt-retro`).
+
+**Add the marketplace, then install:**
+
 ```bash
-/plugin install Derkiel/prompt-retro
+claude plugin marketplace add Derkiel/prompt-retro
+claude plugin install prompt-retro@prompt-retro
 ```
 
-Or clone into your Claude Code plugins directory directly:
+Or in a Claude Code session:
+
+```
+/plugin marketplace add Derkiel/prompt-retro
+/plugin install prompt-retro@prompt-retro
+```
+
+Restart your Claude Code session after install so the new skill is registered.
+
+**Verify:**
 
 ```bash
-git clone https://github.com/Derkiel/prompt-retro ~/.claude/plugins/prompt-retro
+claude plugin list
+# should show: prompt-retro@prompt-retro  enabled
 ```
 
 ## Why it exists

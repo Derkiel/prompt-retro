@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "prompt-retro",
+  "description": "Mirror your own prompts through the 3D lens (Define / Done / Disclose) for sharper thinking.",
+  "owner": {
+    "name": "JunGyu"
+  },
+  "plugins": [
+    {
+      "name": "prompt-retro",
+      "description": "A Claude Code skill that mirrors your own prompts back through three questions — Define, Done, Disclose — so you can spot what you left vague and revise it yourself.",
+      "category": "productivity",
+      "source": "./plugins/prompt-retro",
+      "homepage": "https://github.com/Derkiel/prompt-retro",
+      "license": "MIT"
+    }
+  ]
+}
